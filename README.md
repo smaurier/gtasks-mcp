@@ -1,5 +1,9 @@
 # gtasks-mcp
 
+![CI](https://github.com/smaurier/gtasks-mcp/actions/workflows/ci.yml/badge.svg)
+![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![Node >= 20](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
+
 A [Model Context Protocol](https://modelcontextprotocol.io) server for Google Tasks — list, search, create, update, delete, and clear tasks from Claude (or any MCP-compatible client).
 
 Adapted from [zcaceres/gtasks-mcp](https://github.com/zcaceres/gtasks-mcp) (MIT), rebuilt on plain Node/TypeScript instead of Bun, with credentials moved out of the repo entirely (see [Security](#security) below) and a full test suite.
