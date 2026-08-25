@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.log
+
+# Belt-and-suspenders: credentials never live inside the repo at all (see
+# src/config.ts — they're stored under the OS user-config dir, e.g.
+# ~/.gtasks-mcp/ on this machine), so these patterns should never actually
+# match anything here. Kept anyway in case someone points the paths at the
+# repo during local testing.
+oauth-keys.json
+credentials.json
+.gtasks-mcp-credentials.json
