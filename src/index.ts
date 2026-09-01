@@ -5,6 +5,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { google } from "googleapis";
+import { buildAuthClient, type OAuthKeyfile } from "./auth.js";
 import { CONFIG_DIR, credentialsPath, oauthKeysPath } from "./config.js";
 import { TaskActions } from "./tasks.js";
 
@@ -159,10 +160,14 @@ async function loadCredentialsAndRunServer(): Promise<void> {
     process.exitCode = 1;
     return;
   }
+  if (!existsSync(oauthKeysPath)) {
+    console.error(`OAuth client file not found at ${oauthKeysPath}. See README.`);
+    process.exitCode = 1;
+    return;
+  }
   const credentials = JSON.parse(readFileSync(credentialsPath, "utf-8")) as Record<string, unknown>;
-  const auth = new google.auth.OAuth2();
-  auth.setCredentials(credentials);
-  google.options({ auth });
+  const oauthKeys = JSON.parse(readFileSync(oauthKeysPath, "utf-8")) as OAuthKeyfile;
+  google.options({ auth: buildAuthClient(oauthKeys, credentials) });
 
   const transport = new StdioServerTransport();
   await server.connect(transport);
