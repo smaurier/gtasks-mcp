@@ -4,6 +4,11 @@
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node >= 20](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
 
+> **Status: abandoned.** This repository is no longer maintained (last commit 1 September
+> 2026) and is not recommended for real use. It stays online as a POC: the code, the test
+> suite and the credentials-out-of-the-repo setup may still be useful to anyone starting
+> from [zcaceres/gtasks-mcp](https://github.com/zcaceres/gtasks-mcp).
+
 A [Model Context Protocol](https://modelcontextprotocol.io) server for Google Tasks — list, search, create, update, delete, and clear tasks from Claude (or any MCP-compatible client).
 
 Adapted from [zcaceres/gtasks-mcp](https://github.com/zcaceres/gtasks-mcp) (MIT), rebuilt on plain Node/TypeScript instead of Bun, with credentials moved out of the repo entirely (see [Security](#security) below) and a full test suite.
